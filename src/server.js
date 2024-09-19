@@ -9,29 +9,14 @@ const onRequest = (request, response) => {
 
   switch (request.url) {
     case '/':
-      htmlHandler.getIndex(request, response);
-      break;
-    case '/party.mp4':
       mediaHandler.getParty(request, response);
       break;
-      //     case '/rich-client.html':
-      //         htmlHandler.getRichClient(request, response);
-      //         break;
-      //     case '/hello':
-      //         textHandler.getHello(request, response);
-      //         break;
-      //     case '/time':
-      //         textHandler.getTime(request, response);
-      //         break;
-      //     case '/helloJSON':
-      //         jsonHandler.getHelloJSON(request, response);
-      //         break;
-      //     case '/timeJSON':
-      //         jsonHandler.getTimeJSON(request, response);
-      //         break;
-      //     case '/dankmemes':
-      //         imageHandler.getImage(request, response);
-      //         break;
+    case '/page2':
+      mediaHandler.getBird(request, response);
+      break;
+    case '/page3':
+      mediaHandler.getBling(request, response);
+      break;
     default:
       htmlHandler.getIndex(request, response);
       break;

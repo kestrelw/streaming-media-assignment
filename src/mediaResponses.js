@@ -1,8 +1,8 @@
 const fs = require('fs'); // pull in the file system module
 const path = require('path');
 
-const getParty = (request, response) => {
-  const file = path.resolve(__dirname,'../client/party.mp4');
+const loadFile = (request, response, filePath, fileType) => {
+  const file = path.resolve(__dirname, filePath);
 
   fs.stat(file, (err, stats) => {
     if (err) {
@@ -35,7 +35,7 @@ const getParty = (request, response) => {
       'Content-Range': `bytes ${start}-${end}/${total}`,
       'Accept-Ranges': 'bytes',
       'Content-Length': chunksize,
-      'Content-Type': 'video/mp4',
+      'Content-Type': fileType,
     });
 
     const stream = fs.createReadStream(file, { start, end });
@@ -52,12 +52,20 @@ const getParty = (request, response) => {
   });
 };
 
-// const image = fs.readFileSync(`${__dirname}/../client/spongegar.png`);
+const getParty = (request, response) => {
+  loadFile(request, response, '../client/party.mp4', 'video/mp4');
+};
 
-// const getImage = (request, response) => {
-//   response.writeHead(200, { 'Content-Type': 'image/png' });
-//   response.write(image);
-//   response.end();
-// };
+const getBling = (request, response) => {
+  loadFile(request, response, '../client/bling.mp3', 'audio/mpeg');
+};
 
-module.exports.getParty = getParty;
+const getBird = (request, response) => {
+  loadFile(request, response, '../client/bird.mp4', 'video/mp4');
+};
+
+module.exports = {
+  getParty,
+  getBling,
+  getBird,
+};
