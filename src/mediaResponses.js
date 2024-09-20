@@ -69,5 +69,3 @@ module.exports = {
   getBling,
   getBird,
 };
-
-

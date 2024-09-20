@@ -9,13 +9,22 @@ const onRequest = (request, response) => {
 
   switch (request.url) {
     case '/':
-      mediaHandler.getParty(request, response);
+      htmlHandler.getIndex(request, response);
       break;
     case '/page2':
-      mediaHandler.getBird(request, response);
+      htmlHandler.getPage2(request, response);
       break;
     case '/page3':
+      htmlHandler.getPage3(request, response);
+      break;
+    case '/party.mp4':
+      mediaHandler.getParty(request, response);
+      break;
+    case '/bling.mp3':
       mediaHandler.getBling(request, response);
+      break;
+    case '/bird.mp4':
+      mediaHandler.getBird(request, response);
       break;
     default:
       htmlHandler.getIndex(request, response);
